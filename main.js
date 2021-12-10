@@ -7,6 +7,9 @@ import ImageWMS from 'ol/source/ImageWMS';
 import ImageArcGISRest from 'ol/source/ImageArcGISRest';
 import { fromLonLat } from 'ol/proj';
 import XYZ from 'ol/source/XYZ';
+import VectorLayer from 'ol/layer/Vector';
+import VectorSource from 'ol/source/Vector';
+import GeoJSON from 'ol/format/GeoJSON';
 
 var format = 'image/png';
 
@@ -103,3 +106,12 @@ const jalanBigLayer = new Image({
 })
 
 map.addLayer(jalanBigLayer)
+
+const vectorLayer = new VectorLayer({
+  source: new VectorSource({
+    url: './data/pendidikan_pt_25k.geojson',
+    format: new GeoJSON(),
+  })
+})
+
+map.addLayer(vectorLayer)
